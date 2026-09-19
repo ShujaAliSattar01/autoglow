@@ -1,0 +1,71 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { CalendarClock, Car, ListChecks, Sparkles } from "lucide-react";
+
+const steps = [
+  {
+    number: "01",
+    title: "Choose Your Service",
+    description: "Select the service or package your vehicle needs.",
+    icon: ListChecks,
+  },
+  {
+    number: "02",
+    title: "Pick a Time",
+    description: "Choose your preferred appointment date and time.",
+    icon: CalendarClock,
+  },
+  {
+    number: "03",
+    title: "We Come to You",
+    description: "Our detailing team arrives at your home or office.",
+    icon: Car,
+  },
+  {
+    number: "04",
+    title: "Enjoy the Glow",
+    description: "Your vehicle is cleaned, detailed and ready to shine.",
+    icon: Sparkles,
+  },
+];
+
+export default function HowItWorks() {
+  return (
+    <section className="bg-white py-16 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+            Car Care Without Leaving Home
+          </h2>
+          <p className="mt-3 text-base text-muted">
+            A simple, four-step process from booking to a spotless car.
+          </p>
+        </div>
+
+        <div className="relative mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="pointer-events-none absolute top-9 left-0 right-0 hidden h-px bg-slate-200 lg:block" />
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+              className="relative flex flex-col items-start"
+            >
+              <div className="relative z-10 flex h-[72px] w-[72px] items-center justify-center rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <step.icon className="h-7 w-7 text-primary" />
+                <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-navy text-[11px] font-bold text-white">
+                  {step.number}
+                </span>
+              </div>
+              <h3 className="mt-5 text-lg font-semibold text-navy">{step.title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted">{step.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
