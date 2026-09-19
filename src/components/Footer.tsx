@@ -6,12 +6,12 @@ import SafeImage from "@/components/SafeImage";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const footerLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Monthly Plans", href: "#monthly-plans" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Book Appointment", href: "#book" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Monthly Plans", href: "/#monthly-plans" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "Book Appointment", href: "/#book" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Footer() {
@@ -23,9 +23,9 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <Link href="#home" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2">
               <SafeImage
-                src="/images/autoglow-logo.png"
+                src="/images/autoglow-logo.webp"
                 alt="AutoGlow logo"
                 width={36}
                 height={36}
@@ -117,7 +117,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-slate-800 pt-6 text-center text-xs text-slate-500">
+        <div className="mt-12 border-t border-slate-800 pt-6 text-center text-xs text-slate-400">
           &copy; {year} AutoGlow. All rights reserved.
         </div>
       </div>

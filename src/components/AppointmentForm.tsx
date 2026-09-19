@@ -101,7 +101,7 @@ export default function AppointmentForm() {
             href={continueWhatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+            className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#0F7A40] px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
           >
             <WhatsAppIcon className="h-4 w-4" /> Continue on WhatsApp
           </a>
@@ -233,7 +233,7 @@ export default function AppointmentForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-7 flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#0668c9] disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-7 flex w-full items-center justify-center gap-2 rounded-full bg-primary-strong px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#0559b0] disabled:cursor-not-allowed disabled:opacity-70"
       >
         {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
         Book AutoGlow at Your Doorstep

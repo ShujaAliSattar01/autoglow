@@ -9,13 +9,13 @@ import SafeImage from "@/components/SafeImage";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Monthly Plans", href: "#monthly-plans" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Book Appointment", href: "#book" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "Services", href: "/#services" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Monthly Plans", href: "/#monthly-plans" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "Book Appointment", href: "/#book" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -47,15 +47,14 @@ export default function Navbar() {
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="#home" className="flex items-center gap-2 shrink-0" aria-label="AutoGlow home">
+        <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="AutoGlow home">
           <SafeImage
-            src="/images/autoglow-logo.png"
-            alt="AutoGlow logo"
+            src="/images/autoglow-logo.webp"
+            alt="AutoGlow mobile car wash and detailing logo"
             width={36}
             height={36}
             className="h-9 w-9 rounded-md object-contain"
             fallbackClassName="rounded-md"
-            priority
           />
           <span className="text-lg font-bold tracking-tight text-navy">AutoGlow</span>
         </Link>
@@ -84,12 +83,12 @@ export default function Navbar() {
               <WhatsAppIcon className="h-5 w-5" />
             </a>
           )}
-          <a
-            href="#book"
-            className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0668c9]"
+          <Link
+            href="/#book"
+            className="rounded-full bg-primary-strong px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0559b0]"
           >
             Book Now
-          </a>
+          </Link>
         </div>
 
         <button
@@ -122,19 +121,19 @@ export default function Navbar() {
               </a>
             ))}
             <div className="mt-2 flex flex-col gap-2">
-              <a
-                href="#book"
+              <Link
+                href="/#book"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-white"
+                className="rounded-full bg-primary-strong px-5 py-3 text-center text-sm font-semibold text-white"
               >
                 Book Appointment
-              </a>
+              </Link>
               {whatsappUrl && (
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white"
+                  className="flex items-center justify-center gap-2 rounded-full bg-[#0F7A40] px-5 py-3 text-sm font-semibold text-white"
                 >
                   <WhatsAppIcon className="h-4 w-4" /> WhatsApp Us
                 </a>

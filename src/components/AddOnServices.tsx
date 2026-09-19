@@ -1,7 +1,4 @@
-"use client";
-
 import { Plus } from "lucide-react";
-import { motion } from "framer-motion";
 import { addOnServices } from "@/data/add-ons";
 
 export default function AddOnServices() {
@@ -18,13 +15,9 @@ export default function AddOnServices() {
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {addOnServices.map((addon, i) => (
-            <motion.div
+          {addOnServices.map((addon) => (
+            <div
               key={addon.id}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.35, delay: (i % 6) * 0.04 }}
               className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-light px-5 py-4"
             >
               <div className="flex items-center gap-3">
@@ -33,10 +26,10 @@ export default function AddOnServices() {
                 </span>
                 <span className="text-sm font-medium text-navy">{addon.name}</span>
               </div>
-              <span className="shrink-0 text-sm font-semibold text-primary">
+              <span className="shrink-0 text-sm font-semibold text-primary-strong">
                 {addon.priceLabel}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
 

@@ -40,7 +40,7 @@ export default function VehicleSelector() {
             )}
           >
             <Icon className={cn("h-6 w-6", active ? "text-primary" : "text-slate-500")} />
-            <span className={cn("text-sm font-semibold", active ? "text-primary" : "text-navy")}>
+            <span className={cn("text-sm font-semibold", active ? "text-primary-strong" : "text-navy")}>
               {option.label}
             </span>
             <span className="text-xs text-muted">{option.description}</span>

@@ -41,6 +41,8 @@ export interface ServiceItem {
   name: string;
   description: string;
   icon: string;
+  /** Path to a dedicated service page, if one exists. */
+  href?: string;
 }
 
 export interface FaqItem {

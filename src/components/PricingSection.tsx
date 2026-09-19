@@ -25,8 +25,8 @@ export default function PricingSection() {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {pricingPackages.map((pkg, i) => (
-            <PricingCard key={pkg.id} pkg={pkg} vehicle={vehicle} index={i} />
+          {pricingPackages.map((pkg) => (
+            <PricingCard key={pkg.id} pkg={pkg} vehicle={vehicle} />
           ))}
         </div>
       </div>

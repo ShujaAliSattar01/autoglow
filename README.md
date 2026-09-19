@@ -100,18 +100,18 @@ npm run build
 Brand imagery lives in `public/images/`:
 
 ```
-/images/autoglow-logo.png
-/images/hero-car-wash.png
-/images/express-wash.png
-/images/wash-and-wax.png
-/images/complete-detailing.png
-/images/ceramic-protection.png
-/images/before-after/exterior-before.png
-/images/before-after/exterior-after.png
-/images/before-after/interior-before.png
-/images/before-after/interior-after.png
-/images/before-after/ceramic-before.png
-/images/before-after/ceramic-after.png
+/images/autoglow-logo.webp
+/images/hero-car-wash.webp
+/images/express-wash.webp
+/images/wash-and-wax.webp
+/images/complete-detailing.webp
+/images/ceramic-protection.webp
+/images/before-after/exterior-before.webp
+/images/before-after/exterior-after.webp
+/images/before-after/interior-before.webp
+/images/before-after/interior-after.webp
+/images/before-after/ceramic-before.webp
+/images/before-after/ceramic-after.webp
 ```
 
 Any missing image gracefully falls back to a placeholder in the UI instead of breaking the layout.

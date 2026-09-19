@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { CalendarClock, Car, ListChecks, Sparkles } from "lucide-react";
 
 const steps = [
@@ -45,15 +42,8 @@ export default function HowItWorks() {
 
         <div className="relative mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="pointer-events-none absolute top-9 left-0 right-0 hidden h-px bg-slate-200 lg:block" />
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="relative flex flex-col items-start"
-            >
+          {steps.map((step) => (
+            <div key={step.number} className="relative flex flex-col items-start">
               <div className="relative z-10 flex h-[72px] w-[72px] items-center justify-center rounded-2xl border border-slate-200 bg-white shadow-sm">
                 <step.icon className="h-7 w-7 text-primary" />
                 <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-navy text-[11px] font-bold text-white">
@@ -62,7 +52,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="mt-5 text-lg font-semibold text-navy">{step.title}</h3>
               <p className="mt-1.5 text-sm leading-relaxed text-muted">{step.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

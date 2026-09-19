@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   Droplets,
   Sparkles,
@@ -42,16 +40,12 @@ export default function Services() {
         </div>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service, i) => {
+          {services.map((service) => {
             const Icon = iconMap[service.icon] ?? Sparkles;
             const whatsappUrl = getWhatsAppUrl(getPackageWhatsAppMessage(service.name));
             return (
-              <motion.div
+              <div
                 key={service.id}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.4, delay: (i % 4) * 0.06 }}
                 className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -62,12 +56,12 @@ export default function Services() {
                   {service.description}
                 </p>
                 <div className="mt-4 flex items-center justify-between gap-2">
-                  <a
-                    href="#pricing"
-                    className="inline-flex items-center text-sm font-semibold text-primary transition-colors group-hover:text-[#0668c9]"
+                  <Link
+                    href={service.href ?? "/#pricing"}
+                    className="inline-flex items-center text-sm font-semibold text-primary-strong transition-colors group-hover:text-[#0559b0]"
                   >
-                    Book Now &rarr;
-                  </a>
+                    {service.href ? "Learn More" : "Book Now"} &rarr;
+                  </Link>
                   {whatsappUrl && (
                     <a
                       href={whatsappUrl}
@@ -81,7 +75,7 @@ export default function Services() {
                     </a>
                   )}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

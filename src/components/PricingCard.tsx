@@ -1,7 +1,5 @@
-"use client";
-
+import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
-import { motion } from "framer-motion";
 import SafeImage from "@/components/SafeImage";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { cn, formatPKR } from "@/lib/utils";
@@ -11,19 +9,14 @@ import type { PricingPackage, VehicleType } from "@/types";
 interface PricingCardProps {
   pkg: PricingPackage;
   vehicle: VehicleType;
-  index?: number;
 }
 
-export default function PricingCard({ pkg, vehicle, index = 0 }: PricingCardProps) {
+export default function PricingCard({ pkg, vehicle }: PricingCardProps) {
   const highlighted = Boolean(pkg.badge);
   const whatsappUrl = getWhatsAppUrl(getPackageWhatsAppMessage(pkg.name, vehicle));
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.4, delay: (index % 4) * 0.06 }}
+    <div
       className={cn(
         "flex flex-col overflow-hidden rounded-2xl border bg-white shadow-sm transition-shadow hover:shadow-lg",
         highlighted ? "border-primary ring-2 ring-primary" : "border-slate-200"
@@ -32,9 +25,9 @@ export default function PricingCard({ pkg, vehicle, index = 0 }: PricingCardProp
       <div className="relative aspect-square w-full shrink-0 bg-gradient-to-b from-light to-white">
         <SafeImage
           src={pkg.image}
-          alt={pkg.name}
+          alt={`${pkg.name} service in Lahore by AutoGlow`}
           fill
-          sizes="(max-width: 1024px) 100vw, 25vw"
+          sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"
           className="object-contain p-4"
         />
         {pkg.badge && (
@@ -63,17 +56,17 @@ export default function PricingCard({ pkg, vehicle, index = 0 }: PricingCardProp
         </ul>
 
         <div className="mt-6 flex items-center gap-2">
-          <a
-            href="#book"
+          <Link
+            href="/#book"
             className={cn(
               "inline-flex flex-1 items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-colors",
               highlighted
-                ? "bg-primary text-white hover:bg-[#0668c9]"
+                ? "bg-primary-strong text-white hover:bg-[#0559b0]"
                 : "border border-slate-200 text-navy hover:border-primary/30 hover:text-primary"
             )}
           >
             {pkg.ctaLabel}
-          </a>
+          </Link>
           {whatsappUrl && (
             <a
               href={whatsappUrl}
@@ -81,13 +74,13 @@ export default function PricingCard({ pkg, vehicle, index = 0 }: PricingCardProp
               rel="noopener noreferrer"
               aria-label={`Ask about ${pkg.name} on WhatsApp`}
               title="Ask on WhatsApp"
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#25D366]/30 bg-[#25D366]/10 text-[#128C4A] transition-colors hover:bg-[#25D366]/20"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#25D366]/30 bg-[#25D366]/10 text-[#0D6E3A] transition-colors hover:bg-[#25D366]/20"
             >
               <WhatsAppIcon className="h-5 w-5" />
             </a>
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

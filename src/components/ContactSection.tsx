@@ -45,11 +45,11 @@ export default function ContactSection() {
               rel="noopener noreferrer"
               className="flex flex-col items-start rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-6 transition-shadow hover:shadow-md"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#25D366]/15 text-[#128C4A]">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#25D366]/15 text-[#0D6E3A]">
                 <WhatsAppIcon className="h-5 w-5" />
               </div>
               <p className="mt-4 text-sm font-semibold text-navy">WhatsApp</p>
-              <p className="mt-1 text-sm text-[#128C4A]">WhatsApp AutoGlow &rarr;</p>
+              <p className="mt-1 text-sm text-[#0D6E3A]">WhatsApp AutoGlow &rarr;</p>
             </a>
           )}
 

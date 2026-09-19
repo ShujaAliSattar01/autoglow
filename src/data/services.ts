@@ -6,12 +6,14 @@ export const services: ServiceItem[] = [
     name: "Exterior Car Wash",
     description: "A thorough hand wash that lifts dirt and road grime without harming your paint.",
     icon: "Droplets",
+    href: "/services/car-wash-lahore",
   },
   {
     id: "interior-cleaning",
     name: "Interior Cleaning",
     description: "Vacuuming, wipe-downs and detail work that leaves your cabin fresh and tidy.",
     icon: "Sparkles",
+    href: "/services/interior-cleaning-lahore",
   },
   {
     id: "wash-wax",
@@ -24,6 +26,7 @@ export const services: ServiceItem[] = [
     name: "Complete Detailing",
     description: "Interior and exterior deep-cleaned, polished and protected, inside out.",
     icon: "Wand2",
+    href: "/services/car-detailing-lahore",
   },
   {
     id: "engine-bay",
@@ -42,6 +45,7 @@ export const services: ServiceItem[] = [
     name: "Ceramic Protection",
     description: "A hydrophobic ceramic layer that guards your paint and deepens its gloss.",
     icon: "ShieldHalf",
+    href: "/services/ceramic-coating-lahore",
   },
   {
     id: "headlight-restoration",

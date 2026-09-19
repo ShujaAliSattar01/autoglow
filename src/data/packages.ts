@@ -5,7 +5,7 @@ export const pricingPackages: PricingPackage[] = [
     id: "express-wash",
     name: "Express Wash",
     description: "A quick, thorough refresh for cars that just need a clean shine.",
-    image: "/images/express-wash.png",
+    image: "/images/express-wash.webp",
     duration: "~45 mins",
     prices: {
       hatchback: 1799,
@@ -29,7 +29,7 @@ export const pricingPackages: PricingPackage[] = [
     id: "wash-and-wax",
     name: "Wash & Wax",
     description: "Everything in Express Wash, plus a protective wax for extra shine.",
-    image: "/images/wash-and-wax.png",
+    image: "/images/wash-and-wax.webp",
     duration: "~1 hour",
     prices: {
       hatchback: 2499,
@@ -53,7 +53,7 @@ export const pricingPackages: PricingPackage[] = [
     id: "complete-detailing",
     name: "Complete Detailing",
     description: "Our most thorough package — a deep interior and exterior transformation.",
-    image: "/images/complete-detailing.png",
+    image: "/images/complete-detailing.webp",
     duration: "~2–3 hours",
     badge: "MOST POPULAR",
     prices: {
@@ -82,7 +82,7 @@ export const pricingPackages: PricingPackage[] = [
     id: "ceramic-protection",
     name: "Ceramic Protection",
     description: "Long-lasting hydrophobic protection with a deep, glossy finish.",
-    image: "/images/ceramic-protection.png",
+    image: "/images/ceramic-protection.webp",
     duration: "~4–5 hours",
     prices: {
       hatchback: 14999,

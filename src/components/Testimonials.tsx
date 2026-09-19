@@ -1,11 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import dynamic from "next/dynamic";
 import { Plus, CheckCircle2 } from "lucide-react";
 import TestimonialCard from "@/components/TestimonialCard";
-import AddReviewModal from "@/components/AddReviewModal";
 import { seedTestimonials } from "@/data/testimonials-seed";
 import type { Testimonial } from "@/types";
+
+// Deferred: only needed once a visitor opens the review form.
+const AddReviewModal = dynamic(() => import("@/components/AddReviewModal"), {
+  ssr: false,
+});
 
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>(seedTestimonials);
@@ -68,7 +73,7 @@ export default function Testimonials() {
             ref={addButtonRef}
             type="button"
             onClick={() => setModalOpen(true)}
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0668c9]"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary-strong px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0559b0]"
           >
             <Plus className="h-4 w-4" /> Add Your Review
           </button>
@@ -84,7 +89,9 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <AddReviewModal open={modalOpen} onClose={closeModal} onSuccess={handleSuccess} />
+      {modalOpen && (
+        <AddReviewModal open={modalOpen} onClose={closeModal} onSuccess={handleSuccess} />
+      )}
 
       {toast && (
         <div

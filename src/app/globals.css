@@ -3,14 +3,19 @@
 :root {
   --color-navy: #071426;
   --color-primary: #087cf0;
+  /* One step darker than primary: used for white-on-blue buttons and small blue
+     text so they meet WCAG AA (4.5:1). Icons and tints keep the brighter primary. */
+  --color-primary-strong: #0668c9;
   --color-cyan: #00c8ff;
   --color-light: #f5f8fc;
-  --color-muted: #64748b;
+  /* #5b6b82 clears 4.5:1 on both white and the light background; #64748b did not. */
+  --color-muted: #5b6b82;
 }
 
 @theme inline {
   --color-navy: var(--color-navy);
   --color-primary: var(--color-primary);
+  --color-primary-strong: var(--color-primary-strong);
   --color-cyan: var(--color-cyan);
   --color-light: var(--color-light);
   --color-muted: var(--color-muted);

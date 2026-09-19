@@ -1,5 +1,3 @@
-"use client";
-
 import { Star } from "lucide-react";
 import SafeImage from "@/components/SafeImage";
 import type { Testimonial } from "@/types";
@@ -33,7 +31,7 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
             />
           </div>
         ) : (
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary-strong">
             {initials(testimonial.name)}
           </div>
         )}
@@ -45,7 +43,11 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
         </div>
       </div>
 
-      <div className="mt-3 flex items-center gap-0.5" aria-label={`${testimonial.rating} out of 5 stars`}>
+      <div
+        role="img"
+        className="mt-3 flex items-center gap-0.5"
+        aria-label={`${testimonial.rating} out of 5 stars`}
+      >
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
             key={i}

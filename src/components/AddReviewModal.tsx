@@ -135,7 +135,7 @@ export default function AddReviewModal({ open, onClose, onSuccess }: AddReviewMo
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center px-4 py-6">
       <div
-        className="absolute inset-0 bg-navy/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-navy/60"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -325,7 +325,7 @@ export default function AddReviewModal({ open, onClose, onSuccess }: AddReviewMo
             <button
               type="submit"
               disabled={submitting}
-              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0668c9] disabled:cursor-not-allowed disabled:opacity-70"
+              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-primary-strong px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0559b0] disabled:cursor-not-allowed disabled:opacity-70"
             >
               {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
               Submit Review

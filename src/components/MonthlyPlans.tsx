@@ -1,7 +1,7 @@
 "use client";
 
+import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
-import { motion } from "framer-motion";
 import { monthlyPlans } from "@/data/monthly-plans";
 import { useVehicle } from "@/components/VehicleContext";
 import { cn, formatPKR } from "@/lib/utils";
@@ -24,16 +24,12 @@ export default function MonthlyPlans() {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {monthlyPlans.map((plan, i) => {
+          {monthlyPlans.map((plan) => {
             const highlighted = Boolean(plan.badge);
             const whatsappUrl = getWhatsAppUrl(getMonthlyPlanWhatsAppMessage(plan.name, vehicle));
             return (
-              <motion.div
+              <div
                 key={plan.id}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
                 className={cn(
                   "flex flex-col rounded-2xl border bg-white p-7 shadow-sm transition-shadow hover:shadow-lg",
                   highlighted ? "border-primary ring-2 ring-primary" : "border-slate-200"
@@ -64,17 +60,17 @@ export default function MonthlyPlans() {
                 </ul>
 
                 <div className="mt-6 flex items-center gap-2">
-                  <a
-                    href="#book"
+                  <Link
+                    href="/#book"
                     className={cn(
                       "inline-flex flex-1 items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-colors",
                       highlighted
-                        ? "bg-primary text-white hover:bg-[#0668c9]"
+                        ? "bg-primary-strong text-white hover:bg-[#0559b0]"
                         : "border border-slate-200 text-navy hover:border-primary/30 hover:text-primary"
                     )}
                   >
                     {plan.ctaLabel}
-                  </a>
+                  </Link>
                   {whatsappUrl && (
                     <a
                       href={whatsappUrl}
@@ -82,13 +78,13 @@ export default function MonthlyPlans() {
                       rel="noopener noreferrer"
                       aria-label={`Ask about ${plan.name} on WhatsApp`}
                       title="Ask on WhatsApp"
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#25D366]/30 bg-[#25D366]/10 text-[#128C4A] transition-colors hover:bg-[#25D366]/20"
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#25D366]/30 bg-[#25D366]/10 text-[#0D6E3A] transition-colors hover:bg-[#25D366]/20"
                     >
                       <WhatsAppIcon className="h-5 w-5" />
                     </a>
                   )}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

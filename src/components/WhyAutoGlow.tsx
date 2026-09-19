@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Home, Wrench, FlaskConical, UserCheck, ReceiptText, CalendarCheck2 } from "lucide-react";
 
 const benefits = [
@@ -48,15 +45,8 @@ export default function WhyAutoGlow() {
         </div>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {benefits.map((benefit, i) => (
-            <motion.div
-              key={benefit.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6"
-            >
+          {benefits.map((benefit) => (
+            <div key={benefit.title} className="rounded-2xl border border-white/10 bg-white/5 p-6">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan/10 text-cyan">
                 <benefit.icon className="h-5 w-5" />
               </div>
@@ -64,7 +54,7 @@ export default function WhyAutoGlow() {
               <p className="mt-1.5 text-sm leading-relaxed text-slate-300">
                 {benefit.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,26 +1,23 @@
-"use client";
-
-import { motion } from "framer-motion";
 import SafeImage from "@/components/SafeImage";
 
 const examples = [
   {
     id: "exterior",
     label: "Exterior Detailing",
-    before: "/images/before-after/exterior-before.png",
-    after: "/images/before-after/exterior-after.png",
+    before: "/images/before-after/exterior-before.webp",
+    after: "/images/before-after/exterior-after.webp",
   },
   {
     id: "interior",
     label: "Interior Deep Clean",
-    before: "/images/before-after/interior-before.png",
-    after: "/images/before-after/interior-after.png",
+    before: "/images/before-after/interior-before.webp",
+    after: "/images/before-after/interior-after.webp",
   },
   {
     id: "ceramic",
     label: "Ceramic Protection",
-    before: "/images/before-after/ceramic-before.png",
-    after: "/images/before-after/ceramic-after.png",
+    before: "/images/before-after/ceramic-before.webp",
+    after: "/images/before-after/ceramic-after.webp",
   },
 ];
 
@@ -38,13 +35,9 @@ export default function BeforeAfter() {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {examples.map((example, i) => (
-            <motion.div
+          {examples.map((example) => (
+            <div
               key={example.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
               className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
             >
               <div className="grid grid-cols-2">
@@ -68,7 +61,7 @@ export default function BeforeAfter() {
                     sizes="(max-width: 768px) 50vw, 16vw"
                     className="object-cover object-center"
                   />
-                  <span className="absolute left-2 top-2 rounded-full bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
+                  <span className="absolute left-2 top-2 rounded-full bg-primary-strong px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
                     After
                   </span>
                 </div>
@@ -76,7 +69,7 @@ export default function BeforeAfter() {
               <div className="px-5 py-4">
                 <p className="text-sm font-semibold text-navy">{example.label}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

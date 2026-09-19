@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
@@ -15,18 +16,18 @@ export default function FinalCTA() {
           Book professional car care at your home or office.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <a
-            href="#book"
-            className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#0668c9]"
+          <Link
+            href="/#book"
+            className="inline-flex items-center justify-center rounded-full bg-primary-strong px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#0559b0]"
           >
             Book Appointment
-          </a>
+          </Link>
           {whatsappUrl && (
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#1ebe5a]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F7A40] px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#0B6333]"
             >
               <WhatsAppIcon className="h-4 w-4" /> WhatsApp Us
             </a>
