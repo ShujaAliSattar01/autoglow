@@ -3,18 +3,18 @@ import { addOnServices } from "@/data/add-ons";
 
 export default function AddOnServices() {
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-white py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+          <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl lg:text-4xl">
             Individual Services &amp; Add-Ons
           </h2>
-          <p className="mt-3 text-base text-muted">
+          <p className="mt-2 text-sm text-muted sm:mt-3 sm:text-base">
             Need just one thing done? Add any of these on their own or alongside a package.
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid sm:mt-8 grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {addOnServices.map((addon) => (
             <div
               key={addon.id}

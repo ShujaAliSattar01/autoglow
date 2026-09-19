@@ -16,26 +16,26 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative overflow-hidden bg-light">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-8 lg:px-8 lg:py-24">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-8 sm:px-6 sm:py-10 lg:grid-cols-2 lg:gap-10 lg:px-8 lg:py-14">
         <div>
           <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary-strong">
             Trusted by 500+ Car Owners in Lahore
           </span>
 
-          <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-navy sm:text-5xl lg:text-[3.25rem]">
+          <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-navy sm:text-4xl md:text-5xl lg:text-[3.25rem]">
             Mobile Car Wash &amp; Detailing at Your Doorstep in Lahore
           </h1>
 
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted sm:text-base lg:text-lg">
             <strong className="font-semibold text-navy">Your car deserves the AutoGlow treatment.</strong>{" "}
             Professional car wash and detailing delivered directly to your home
             or office. No queues. No waiting rooms. Just a cleaner, brighter car.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/#book"
-              className="inline-flex items-center justify-center rounded-full bg-primary-strong px-7 py-3.5 text-sm font-semibold text-white shadow-md shadow-primary/20 transition-colors hover:bg-[#0559b0]"
+              className="inline-flex items-center justify-center rounded-full bg-primary-strong px-6 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold text-white shadow-md shadow-primary/20 transition-colors hover:bg-[#0559b0]"
             >
               Book Your Wash
             </Link>
@@ -44,14 +44,14 @@ export default function Hero() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 px-7 py-3.5 text-sm font-semibold text-[#0D6E3A] transition-colors hover:bg-[#25D366]/15"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 px-6 py-3 sm:px-7 sm:py-3.5 text-sm font-semibold text-[#0D6E3A] transition-colors hover:bg-[#25D366]/15"
               >
                 <WhatsAppIcon className="h-4 w-4" /> WhatsApp Us
               </a>
             )}
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:gap-x-6 sm:gap-y-3">
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:gap-x-6 sm:gap-y-3">
             {trustIndicators.map((item) => (
               <div key={item} className="flex items-center gap-2 text-sm text-slate-600">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
@@ -60,17 +60,17 @@ export default function Hero() {
             ))}
           </div>
 
-          <ul className="mt-10 grid grid-cols-3 gap-4 border-t border-slate-200 pt-8">
+          <ul className="mt-6 grid sm:mt-8 grid-cols-3 gap-4 border-t border-slate-200 pt-8">
             <li>
-              <p className="text-2xl font-bold text-navy sm:text-3xl">500+</p>
+              <p className="text-xl font-bold text-navy sm:text-3xl">500+</p>
               <p className="mt-1 text-xs text-muted sm:text-sm">Cars Serviced</p>
             </li>
             <li>
-              <p className="text-2xl font-bold text-navy sm:text-3xl">4.9/5</p>
+              <p className="text-xl font-bold text-navy sm:text-3xl">4.9/5</p>
               <p className="mt-1 text-xs text-muted sm:text-sm">Customer Rating</p>
             </li>
             <li>
-              <p className="text-2xl font-bold text-navy sm:text-3xl">100%</p>
+              <p className="text-xl font-bold text-navy sm:text-3xl">100%</p>
               <p className="mt-1 text-xs text-muted sm:text-sm">Doorstep Service</p>
             </li>
           </ul>

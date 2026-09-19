@@ -35,18 +35,18 @@ const benefits = [
 
 export default function WhyAutoGlow() {
   return (
-    <section className="bg-navy py-16 text-white sm:py-20">
+    <section className="bg-navy py-10 text-white sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Why AutoGlow</h2>
-          <p className="mt-3 text-base text-slate-300">
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">Why AutoGlow</h2>
+          <p className="mt-2 text-sm text-slate-300 sm:mt-3 sm:text-base">
             The details that make doorstep car care simple, reliable and worth it.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid sm:mt-10 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit) => (
-            <div key={benefit.title} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div key={benefit.title} className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan/10 text-cyan">
                 <benefit.icon className="h-5 w-5" />
               </div>

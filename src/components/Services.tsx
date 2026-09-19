@@ -27,26 +27,26 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function Services() {
   return (
-    <section id="services" className="bg-light py-16 sm:py-20">
+    <section id="services" className="bg-light py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+          <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl lg:text-4xl">
             Everything Your Car Needs
           </h2>
-          <p className="mt-3 text-base text-muted">
+          <p className="mt-2 text-sm text-muted sm:mt-3 sm:text-base">
             From a quick refresh to full protection — our detailers handle it all,
             right at your doorstep.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid sm:mt-10 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => {
             const Icon = iconMap[service.icon] ?? Sparkles;
             const whatsappUrl = getWhatsAppUrl(getPackageWhatsAppMessage(service.name));
             return (
               <div
                 key={service.id}
-                className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+                className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm transition-shadow hover:shadow-md"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   <Icon className="h-6 w-6" />

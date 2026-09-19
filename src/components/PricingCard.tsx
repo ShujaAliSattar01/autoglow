@@ -22,7 +22,7 @@ export default function PricingCard({ pkg, vehicle }: PricingCardProps) {
         highlighted ? "border-primary ring-2 ring-primary" : "border-slate-200"
       )}
     >
-      <div className="relative aspect-square w-full shrink-0 bg-gradient-to-b from-light to-white">
+      <div className="relative aspect-[4/3] w-full shrink-0 sm:aspect-square bg-gradient-to-b from-light to-white">
         <SafeImage
           src={pkg.image}
           alt={`${pkg.name} service in Lahore by AutoGlow`}
@@ -37,7 +37,7 @@ export default function PricingCard({ pkg, vehicle }: PricingCardProps) {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
         <h3 className="text-lg font-bold text-navy">{pkg.name}</h3>
         <p className="mt-1 text-sm leading-relaxed text-muted">{pkg.description}</p>
 

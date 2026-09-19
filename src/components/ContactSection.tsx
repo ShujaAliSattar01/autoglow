@@ -28,22 +28,22 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="bg-light py-16 sm:py-20">
+    <section id="contact" className="bg-light py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl">Get In Touch</h2>
-          <p className="mt-3 text-base text-muted">
+          <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl lg:text-4xl">Get In Touch</h2>
+          <p className="mt-2 text-sm text-muted sm:mt-3 sm:text-base">
             Reach out with any questions, or book directly online.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid sm:mt-10 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {whatsappUrl && (
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-start rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-6 transition-shadow hover:shadow-md"
+              className="flex flex-col items-start rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-5 sm:p-6 transition-shadow hover:shadow-md"
             >
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#25D366]/15 text-[#0D6E3A]">
                 <WhatsAppIcon className="h-5 w-5" />
@@ -67,12 +67,12 @@ export default function ContactSection() {
               <a
                 key={item.label}
                 href={item.href}
-                className="rounded-2xl border border-slate-200 bg-white p-6 transition-shadow hover:shadow-md"
+                className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 transition-shadow hover:shadow-md"
               >
                 {Content}
               </a>
             ) : (
-              <div key={item.label} className="rounded-2xl border border-slate-200 bg-white p-6">
+              <div key={item.label} className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6">
                 {Content}
               </div>
             );

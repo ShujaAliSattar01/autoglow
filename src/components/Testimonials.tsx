@@ -58,14 +58,14 @@ export default function Testimonials() {
   }
 
   return (
-    <section id="reviews" className="bg-white py-16 sm:py-20">
+    <section id="reviews" className="bg-white py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <div className="text-center sm:text-left">
-            <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+            <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl lg:text-4xl">
               Loved by Car Owners
             </h2>
-            <p className="mt-3 text-base text-muted">
+            <p className="mt-2 text-sm text-muted sm:mt-3 sm:text-base">
               Real feedback from customers across Lahore.
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function Testimonials() {
 
         <div
           aria-busy={loading}
-          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-8 grid sm:mt-10 gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />

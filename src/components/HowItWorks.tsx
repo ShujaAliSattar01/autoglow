@@ -29,18 +29,18 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-white py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+          <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl lg:text-4xl">
             Car Care Without Leaving Home
           </h2>
-          <p className="mt-3 text-base text-muted">
+          <p className="mt-2 text-sm text-muted sm:mt-3 sm:text-base">
             A simple, four-step process from booking to a spotless car.
           </p>
         </div>
 
-        <div className="relative mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="relative mt-8 grid sm:mt-10 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="pointer-events-none absolute top-9 left-0 right-0 hidden h-px bg-slate-200 lg:block" />
           {steps.map((step) => (
             <div key={step.number} className="relative flex flex-col items-start">

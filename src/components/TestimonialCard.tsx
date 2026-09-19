@@ -18,7 +18,7 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
   });
 
   return (
-    <div className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
       <div className="flex items-center gap-3">
         {testimonial.image_url ? (
           <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-slate-200">

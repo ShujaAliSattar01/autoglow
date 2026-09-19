@@ -9,18 +9,18 @@ export default function FAQ() {
   const [openId, setOpenId] = useState<string | null>(faqs[0]?.id ?? null);
 
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-white py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+          <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl lg:text-4xl">
             Frequently Asked Questions
           </h2>
-          <p className="mt-3 text-base text-muted">
+          <p className="mt-2 text-sm text-muted sm:mt-3 sm:text-base">
             Everything you need to know before booking.
           </p>
         </div>
 
-        <div className="mt-10 divide-y divide-slate-200 rounded-2xl border border-slate-200">
+        <div className="mt-6 divide-y divide-slate-200 sm:mt-8 rounded-2xl border border-slate-200">
           {faqs.map((faq) => {
             const open = openId === faq.id;
             return (

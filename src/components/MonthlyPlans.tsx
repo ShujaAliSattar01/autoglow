@@ -12,18 +12,18 @@ export default function MonthlyPlans() {
   const { vehicle } = useVehicle();
 
   return (
-    <section id="monthly-plans" className="bg-light py-16 sm:py-20">
+    <section id="monthly-plans" className="bg-light py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+          <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl lg:text-4xl">
             Keep the Glow All Month
           </h2>
-          <p className="mt-3 text-base text-muted">
+          <p className="mt-2 text-sm text-muted sm:mt-3 sm:text-base">
             Subscribe to a monthly plan and skip the hassle of booking every wash.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid sm:mt-10 gap-6 md:grid-cols-3">
           {monthlyPlans.map((plan) => {
             const highlighted = Boolean(plan.badge);
             const whatsappUrl = getWhatsAppUrl(getMonthlyPlanWhatsAppMessage(plan.name, vehicle));
@@ -31,7 +31,7 @@ export default function MonthlyPlans() {
               <div
                 key={plan.id}
                 className={cn(
-                  "flex flex-col rounded-2xl border bg-white p-7 shadow-sm transition-shadow hover:shadow-lg",
+                  "flex flex-col rounded-2xl border bg-white p-5 sm:p-7 shadow-sm transition-shadow hover:shadow-lg",
                   highlighted ? "border-primary ring-2 ring-primary" : "border-slate-200"
                 )}
               >
