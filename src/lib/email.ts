@@ -1,17 +1,61 @@
 import nodemailer from "nodemailer";
 
+import type { ServiceCategoryId } from "@/types";
+
 export interface AppointmentEmailData {
+  category: ServiceCategoryId;
   fullName: string;
   phone: string;
   email: string;
-  vehicleType: string;
-  vehicleModel: string;
   service: string;
   date: string;
   time: string;
   address: string;
   area: string;
   notes?: string;
+  /** Car Wash & Detailing */
+  vehicleType?: string;
+  vehicleModel?: string;
+  /** Solar Panel Cleaning */
+  panelCount?: string;
+  roofAccess?: string;
+  /** Sofa Cleaning */
+  sofaType?: string;
+  seatCount?: string;
+  fabricType?: string;
+}
+
+const categoryLabels: Record<ServiceCategoryId, string> = {
+  car: "Car Wash & Detailing",
+  solar: "Solar Panel Cleaning",
+  sofa: "Sofa Cleaning",
+};
+
+/** Customer-supplied values land in an HTML email, so escape them. */
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** The category-specific rows that sit between the customer and the schedule. */
+function categoryRows(data: AppointmentEmailData): [string, string][] {
+  if (data.category === "solar") {
+    return [
+      ["Number of Panels", data.panelCount || "—"],
+      ["Roof / Access Details", data.roofAccess || "—"],
+    ];
+  }
+  if (data.category === "sofa") {
+    return [
+      ["Sofa Type", data.sofaType || "—"],
+      ["Number of Seats", data.seatCount || "—"],
+      ["Fabric Type", data.fabricType || "Not specified"],
+    ];
+  }
+  return [["Vehicle", `${data.vehicleType ?? "—"} — ${data.vehicleModel ?? "—"}`]];
 }
 
 const contactEmail = process.env.CONTACT_EMAIL;
@@ -40,11 +84,14 @@ export async function sendAppointmentEmail(data: AppointmentEmailData) {
     return { sent: false as const };
   }
 
+  const categoryLabel = categoryLabels[data.category] ?? categoryLabels.car;
+
   const rows: [string, string][] = [
+    ["Service Category", categoryLabel],
     ["Customer Name", data.fullName],
     ["Phone", data.phone],
     ["Email", data.email],
-    ["Vehicle", `${data.vehicleType} — ${data.vehicleModel}`],
+    ...categoryRows(data),
     ["Package", data.service],
     ["Date", data.date],
     ["Time", data.time],
@@ -55,14 +102,14 @@ export async function sendAppointmentEmail(data: AppointmentEmailData) {
 
   const html = `
     <div style="font-family: Arial, sans-serif; color: #071426;">
-      <h2 style="margin-bottom: 8px;">New AutoGlow Booking</h2>
+      <h2 style="margin-bottom: 8px;">New AutoGlow Booking — ${escapeHtml(categoryLabel)}</h2>
       <table cellpadding="6" style="border-collapse: collapse;">
         ${rows
           .map(
             ([label, value]) => `
           <tr>
-            <td style="font-weight: 600; vertical-align: top;">${label}</td>
-            <td>${value}</td>
+            <td style="font-weight: 600; vertical-align: top;">${escapeHtml(label)}</td>
+            <td>${escapeHtml(value)}</td>
           </tr>`
           )
           .join("")}
@@ -75,7 +122,7 @@ export async function sendAppointmentEmail(data: AppointmentEmailData) {
       from: smtpUser,
       to: contactEmail,
       replyTo: data.email,
-      subject: `New AutoGlow Booking — ${data.fullName} — ${data.service}`,
+      subject: `New AutoGlow Booking — ${categoryLabel} — ${data.fullName} — ${data.service}`,
       html,
     });
     return { sent: true as const };

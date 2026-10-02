@@ -1,4 +1,4 @@
-import type { VehicleType } from "@/types";
+import type { ServiceCategoryId, VehicleType } from "@/types";
 
 // ---------------------------------------------------------------------------
 // Client-safe WhatsApp helpers
@@ -10,7 +10,13 @@ import type { VehicleType } from "@/types";
 // ---------------------------------------------------------------------------
 
 export const DEFAULT_WHATSAPP_MESSAGE =
-  "Hi AutoGlow! I would like to book a car wash/detailing service.";
+  "Hi AutoGlow! I would like to book a doorstep cleaning service in Lahore.";
+
+const categoryLabels: Record<ServiceCategoryId, string> = {
+  car: "Car Wash & Detailing",
+  solar: "Solar Panel Cleaning",
+  sofa: "Sofa Cleaning",
+};
 
 const vehicleLabels: Record<VehicleType, string> = {
   hatchback: "Hatchback",
@@ -56,15 +62,61 @@ export function getMonthlyPlanWhatsAppMessage(planName: string, vehicleType?: Ve
     : `Hi AutoGlow! I am interested in the ${planName} monthly plan.`;
 }
 
-/** Message shown after a successful booking submission, offering to continue on WhatsApp. */
-export function getBookingWhatsAppMessage(details: {
+/** Message for "Ask on WhatsApp" actions on a solar or sofa package. */
+export function getFlatPackageWhatsAppMessage(
+  category: ServiceCategoryId,
+  packageName: string,
+  scope: string
+) {
+  return `Hi AutoGlow! I am interested in the ${packageName} package (${scope}) for ${categoryLabels[category]} in Lahore.`;
+}
+
+/** Message for the "custom quotation" actions shown beside the solar/sofa packages. */
+export function getCustomQuoteWhatsAppMessage(category: ServiceCategoryId) {
+  if (category === "solar") {
+    return "Hi AutoGlow! I have more than 30 solar panels and would like a custom quotation for solar panel cleaning in Lahore.";
+  }
+  if (category === "sofa") {
+    return "Hi AutoGlow! I would like a custom quotation for sofa cleaning in Lahore (extra seats, an oversize sofa or a delicate fabric).";
+  }
+  return `Hi AutoGlow! I would like a custom quotation for ${categoryLabels[category]} in Lahore.`;
+}
+
+export interface BookingWhatsAppDetails {
+  category: ServiceCategoryId;
   service: string;
-  vehicleType?: VehicleType;
   date: string;
   time: string;
-}) {
+  /** Car Wash & Detailing */
+  vehicleType?: VehicleType;
+  vehicleModel?: string;
+  /** Solar Panel Cleaning */
+  panelCount?: string;
+  /** Sofa Cleaning */
+  sofaType?: string;
+  seatCount?: string;
+  fabricType?: string;
+}
+
+/** Message shown after a successful booking submission, offering to continue on WhatsApp. */
+export function getBookingWhatsAppMessage(details: BookingWhatsAppDetails) {
+  const when = `on ${details.date} at ${details.time}`;
+
+  if (details.category === "solar") {
+    const panels = details.panelCount ? ` (${details.panelCount})` : "";
+    return `Hi AutoGlow! I just submitted a booking request for Solar Panel Cleaning — ${details.service}${panels} ${when}.`;
+  }
+
+  if (details.category === "sofa") {
+    const parts = [details.sofaType, details.seatCount, details.fabricType]
+      .filter(Boolean)
+      .join(", ");
+    const sofa = parts ? ` (${parts})` : "";
+    return `Hi AutoGlow! I just submitted a booking request for Sofa Cleaning — ${details.service}${sofa} ${when}.`;
+  }
+
   const vehicleLabel = details.vehicleType ? vehicleLabels[details.vehicleType] : "vehicle";
-  return `Hi AutoGlow! I just submitted a booking request for ${details.service} for my ${vehicleLabel} on ${details.date} at ${details.time}.`;
+  return `Hi AutoGlow! I just submitted a booking request for ${details.service} for my ${vehicleLabel} ${when}.`;
 }
 
 // ---------------------------------------------------------------------------

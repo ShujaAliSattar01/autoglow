@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import { businessConfig, siteUrl } from "@/lib/config";
+import { serviceCategories } from "@/data/service-categories";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const manrope = Manrope({
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | AutoGlow",
   },
   description:
-    "Book professional mobile car wash and car detailing services at your doorstep in Lahore. AutoGlow offers exterior washing, interior deep cleaning, polishing, waxing and ceramic protection.",
+    "Book professional doorstep cleaning in Lahore with AutoGlow: mobile car wash and detailing, solar panel cleaning and sofa cleaning. Exterior washing, interior deep cleaning, polishing, waxing and ceramic protection.",
   keywords: [
     "mobile car wash Lahore",
     "car wash at home Lahore",
@@ -27,6 +28,8 @@ export const metadata: Metadata = {
     "interior car cleaning Lahore",
     "ceramic coating Lahore",
     "car polish Lahore",
+    "solar panel cleaning Lahore",
+    "sofa cleaning Lahore",
   ],
   alternates: {
     canonical: "/",
@@ -38,14 +41,14 @@ export const metadata: Metadata = {
     siteName: "AutoGlow",
     title: "AutoGlow | Mobile Car Wash & Car Detailing in Lahore",
     description:
-      "Book professional mobile car wash and car detailing services at your doorstep in Lahore. Exterior washing, interior deep cleaning, polishing, waxing and ceramic protection.",
+      "Book professional doorstep cleaning in Lahore: mobile car wash and detailing, solar panel cleaning and sofa cleaning.",
     images: [{ url: "/images/hero-car-wash.webp", width: 1600, height: 900 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "AutoGlow | Mobile Car Wash & Car Detailing in Lahore",
     description:
-      "Professional mobile car wash and detailing in Lahore, delivered directly to your home or office.",
+      "Professional mobile car wash and detailing, solar panel cleaning and sofa cleaning in Lahore, delivered directly to your home or office.",
     images: ["/images/hero-car-wash.webp"],
   },
   robots: {
@@ -67,7 +70,7 @@ const structuredData = {
   "@type": "AutoRepair",
   name: businessConfig.name,
   description:
-    "Premium mobile car wash and detailing service delivering professional car care to homes and offices in Lahore, Pakistan.",
+    "Premium doorstep cleaning service in Lahore, Pakistan: mobile car wash and detailing, solar panel cleaning and sofa cleaning, delivered to homes and offices.",
   areaServed: {
     "@type": "City",
     name: businessConfig.serviceArea,
@@ -90,7 +93,20 @@ const structuredData = {
   image: `${siteUrl}/images/hero-car-wash.webp`,
   logo: `${siteUrl}/images/autoglow-logo.webp`,
   url: siteUrl,
-  priceRange: "Rs 999 - Rs 21999",
+  priceRange: "Rs 500 - Rs 21999",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "AutoGlow Doorstep Services in Lahore",
+    itemListElement: serviceCategories.map((category) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: category.name,
+        description: category.description,
+        url: `${siteUrl}${category.href}`,
+      },
+    })),
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

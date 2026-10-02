@@ -11,6 +11,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { services } from "@/data/services";
+import ServiceCategories from "@/components/ServiceCategories";
 import { getWhatsAppUrl, getPackageWhatsAppMessage } from "@/lib/whatsapp";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
@@ -31,9 +32,23 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl lg:text-4xl">
-            Everything Your Car Needs
+            Doorstep Cleaning Services in Lahore
           </h2>
           <p className="mt-2 text-sm text-muted sm:mt-3 sm:text-base">
+            Car wash &amp; detailing, solar panel cleaning and sofa cleaning —
+            all brought to your home or office.
+          </p>
+        </div>
+
+        <div className="mt-8 sm:mt-10">
+          <ServiceCategories />
+        </div>
+
+        <div className="mx-auto mt-12 max-w-2xl text-center sm:mt-14">
+          <h3 className="text-xl font-bold tracking-tight text-navy sm:text-2xl">
+            Everything Your Car Needs
+          </h3>
+          <p className="mt-2 text-sm text-muted sm:text-base">
             From a quick refresh to full protection — our detailers handle it all,
             right at your doorstep.
           </p>
@@ -51,7 +66,7 @@ export default function Services() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-navy">{service.name}</h3>
+                <h4 className="mt-4 text-base font-semibold text-navy">{service.name}</h4>
                 <p className="mt-1.5 flex-1 text-sm leading-relaxed text-muted">
                   {service.description}
                 </p>

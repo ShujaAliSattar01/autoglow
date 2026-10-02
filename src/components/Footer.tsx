@@ -14,6 +14,16 @@ const footerLinks = [
   { label: "Contact", href: "/#contact" },
 ];
 
+// Dedicated service pages, kept separate from the on-page anchors above.
+const footerServiceLinks = [
+  { label: "Mobile Car Wash", href: "/services/car-wash-lahore" },
+  { label: "Car Detailing", href: "/services/car-detailing-lahore" },
+  { label: "Interior Cleaning", href: "/services/interior-cleaning-lahore" },
+  { label: "Ceramic Coating", href: "/services/ceramic-coating-lahore" },
+  { label: "Solar Panel Cleaning", href: "/services/solar-panel-cleaning-lahore" },
+  { label: "Sofa Cleaning", href: "/services/sofa-cleaning-lahore" },
+];
+
 export default function Footer() {
   const whatsappUrl = getWhatsAppUrl();
   const year = new Date().getFullYear();
@@ -21,8 +31,8 @@ export default function Footer() {
   return (
     <footer className="border-t border-slate-800 bg-navy text-slate-300">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-4">
-          <div className="md:col-span-2">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2">
               <SafeImage
                 src="/images/autoglow-logo.webp"
@@ -35,7 +45,8 @@ export default function Footer() {
               <span className="text-lg font-bold text-white">AutoGlow</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
-              Premium mobile car wash &amp; detailing delivered to your doorstep.
+              Premium doorstep cleaning in Lahore — mobile car wash &amp; detailing,
+              solar panel cleaning and sofa cleaning.
             </p>
             <div className="mt-5 flex gap-3">
               <a
@@ -76,6 +87,24 @@ export default function Footer() {
                   <a href={link.href} className="text-sm text-slate-400 transition-colors hover:text-white">
                     {link.label}
                   </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
+              Services
+            </h3>
+            <ul className="mt-4 space-y-2.5">
+              {footerServiceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-400 transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

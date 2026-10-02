@@ -29,7 +29,8 @@ export default function Hero() {
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted sm:text-base lg:text-lg">
             <strong className="font-semibold text-navy">Your car deserves the AutoGlow treatment.</strong>{" "}
             Professional car wash and detailing delivered directly to your home
-            or office. No queues. No waiting rooms. Just a cleaner, brighter car.
+            or office — plus solar panel cleaning and sofa cleaning across
+            Lahore. No queues. No waiting rooms.
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">

@@ -1,6 +1,18 @@
 # AutoGlow
 
-Premium mobile car wash & detailing marketing site for Lahore, Pakistan, built with Next.js (App Router), TypeScript, Tailwind CSS, Supabase and Nodemailer.
+Premium doorstep cleaning marketing site for Lahore, Pakistan, built with Next.js (App Router), TypeScript, Tailwind CSS, Supabase and Nodemailer.
+
+## Services
+
+AutoGlow offers three service categories. Each one is priced from its own data file, so prices are edited in exactly one place:
+
+| Category | Pricing model | Data file |
+| --- | --- | --- |
+| Car Wash & Detailing | Per vehicle type (hatchback / sedan / crossover / SUV) | `src/data/packages.ts`, `src/data/monthly-plans.ts`, `src/data/add-ons.ts` |
+| Solar Panel Cleaning | Flat starting rate per panel-count band | `src/data/solar-packages.ts` |
+| Sofa Cleaning | Flat starting rate per seat count | `src/data/sofa-packages.ts` |
+
+The three categories themselves (names, images, links, starting prices) live in `src/data/service-categories.ts`, which feeds the homepage services grid, the pricing tabs, the navbar and the booking form.
 
 ## Getting Started
 
@@ -83,6 +95,29 @@ alter table public.appointments enable row level security;
 -- server-side API route using the secret key.
 ```
 
+If you created the `appointments` table before solar panel and sofa cleaning were
+added, run this migration so those bookings persist with their own columns:
+
+```sql
+-- Supports the solar panel cleaning and sofa cleaning booking categories.
+alter table public.appointments
+  add column if not exists category text not null default 'car',
+  add column if not exists panel_count text,
+  add column if not exists roof_access text,
+  add column if not exists sofa_type text,
+  add column if not exists seat_count text,
+  add column if not exists fabric_type text;
+
+-- Non-car bookings have no vehicle, so these can no longer be NOT NULL.
+alter table public.appointments alter column vehicle_type drop not null;
+alter table public.appointments alter column vehicle_model drop not null;
+```
+
+> Until this migration is run, the API route falls back to the original schema:
+> a solar or sofa booking is still saved, with its category-specific answers
+> folded into the `notes` column. Booking never fails because persistence failed
+> -- the owner is still notified by email and WhatsApp.
+
 3. In **Storage**, create a public bucket named `testimonial-images` for review photo uploads.
 4. Copy your project URL, publishable key, and secret key into `.env.local`.
 
@@ -102,6 +137,8 @@ Brand imagery lives in `public/images/`:
 ```
 /images/autoglow-logo.webp
 /images/hero-car-wash.webp
+/images/solar-panel-cleaning.webp
+/images/sofa-cleaning.webp
 /images/express-wash.webp
 /images/wash-and-wax.webp
 /images/complete-detailing.webp
@@ -115,3 +152,8 @@ Brand imagery lives in `public/images/`:
 ```
 
 Any missing image gracefully falls back to a placeholder in the UI instead of breaking the layout.
+
+`solar-panel-cleaning.webp` and `sofa-cleaning.webp` are photographic crops taken
+from the AutoGlow promotional artwork, deliberately cut from the areas with no
+overlaid marketing text so they can sit behind headings and beside pricing cards.
+Next.js serves them as AVIF or WebP at responsive widths (`next.config.ts`).

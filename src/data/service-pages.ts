@@ -1,6 +1,13 @@
+import type { ServiceCategoryId } from "@/types";
+
 export interface ServicePageFaq {
   question: string;
   answer: string;
+}
+
+export interface ServicePageBlock {
+  title: string;
+  description: string;
 }
 
 export interface ServicePageContent {
@@ -11,9 +18,34 @@ export interface ServicePageContent {
   intro: string[];
   included: string[];
   whyTitle: string;
-  why: { title: string; description: string }[];
+  why: ServicePageBlock[];
   startingPrice: string;
   faqs: ServicePageFaq[];
+
+  // ---------------------------------------------------------------------
+  // Optional sections. The four original car pages leave these undefined and
+  // render exactly as they always have; the solar and sofa pages use them.
+  // ---------------------------------------------------------------------
+
+  /** Set on pages that show flat-rate package cards and category structured data. */
+  category?: Extract<ServiceCategoryId, "solar" | "sofa">;
+  /** Hero image for the page. */
+  image?: string;
+  imageAlt?: string;
+  /** Heading above the "What's Included" list, when the default does not fit. */
+  includedTitle?: string;
+  /** Heading above the pricing cards. */
+  packagesTitle?: string;
+  packagesIntro?: string;
+  /** "How booking works" steps. */
+  howItWorksTitle?: string;
+  howItWorks?: ServicePageBlock[];
+  /** Service-area copy for Lahore. */
+  serviceAreaTitle?: string;
+  serviceArea?: string[];
+  /** Internal links to the homepage and related services. */
+  relatedTitle?: string;
+  related?: { label: string; href: string; description: string }[];
 }
 
 export const servicePages: ServicePageContent[] = [
@@ -245,6 +277,253 @@ export const servicePages: ServicePageContent[] = [
         question: "Will ceramic coating hide scratches or swirl marks?",
         answer:
           "The machine polishing stage before coating reduces light swirl marks, but a ceramic coating itself is a protective layer, not a substitute for paint correction of deeper scratches.",
+      },
+    ],
+  },
+  {
+    slug: "solar-panel-cleaning-lahore",
+    category: "solar",
+    title: "Solar Panel Cleaning in Lahore",
+    metaDescription:
+      "Book doorstep solar panel cleaning in Lahore with AutoGlow. Gentle, panel-appropriate cleaning of dust and ordinary dirt, priced by panel count from Rs 2,000.",
+    h1: "Solar Panel Cleaning in Lahore",
+    image: "/images/solar-panel-cleaning.webp",
+    imageAlt:
+      "Rooftop solar panels being cleaned with a soft brush during an AutoGlow visit in Lahore",
+    intro: [
+      "Rooftop solar panels in Lahore collect dust quickly, especially through the dry months and after nearby construction work. AutoGlow now offers solar panel cleaning as a doorstep service, using the same careful, equipment-led approach we built our car detailing service on.",
+      "Our team cleans the panel surfaces gently to remove dust and ordinary dirt, then carries out a basic visual check of the panels while we work. Pricing is based on how many panels you have, so you know the starting rate before we arrive.",
+    ],
+    packagesTitle: "Solar Panel Cleaning Packages",
+    packagesIntro:
+      "Choose the package that matches the number of panels on your roof. Every price below is a starting rate, confirmed with you before work begins.",
+    includedTitle: "What a Solar Panel Clean Covers",
+    included: [
+      "Gentle, panel-appropriate surface cleaning",
+      "Removal of surface dust and ordinary dirt",
+      "Removal of light deposits from the panel surface",
+      "Basic visual condition check while we work",
+      "Final surface inspection before we leave",
+      "A clear starting price based on your panel count",
+    ],
+    startingPrice: "Rs 2,000",
+    whyTitle: "Why Book Solar Panel Cleaning With AutoGlow",
+    why: [
+      {
+        title: "Priced by Panel Count",
+        description:
+          "You pick the package that matches your array size, so the starting price is clear before anyone comes to your roof.",
+      },
+      {
+        title: "Gentle on the Panels",
+        description:
+          "We clean panel surfaces using methods appropriate for solar glass. We do not carry out electrical work or repairs.",
+      },
+      {
+        title: "Access Confirmed First",
+        description:
+          "We ask about roof and access details at booking, and confirm that the job can be carried out safely before it is scheduled.",
+      },
+    ],
+    howItWorksTitle: "How Booking Works",
+    howItWorks: [
+      {
+        title: "1. Tell us your panel count",
+        description:
+          "Pick a package, or message us on WhatsApp if you have more than 30 panels and need a custom quotation.",
+      },
+      {
+        title: "2. Share roof and access details",
+        description:
+          "Let us know how the panels are reached — storey height, stairs, ladder access or any restrictions at your property.",
+      },
+      {
+        title: "3. We confirm the booking",
+        description:
+          "We confirm safe access, service eligibility and the final price with you before the appointment is fixed.",
+      },
+      {
+        title: "4. We clean at your doorstep",
+        description:
+          "Our team arrives at the agreed time, cleans the panels and carries out a final surface inspection.",
+      },
+    ],
+    serviceAreaTitle: "Service Area in Lahore",
+    serviceArea: [
+      "AutoGlow covers homes and offices across Lahore for solar panel cleaning. Enter your address and area when booking and we will confirm coverage and timing for your location.",
+      "Travel to some outlying areas may affect scheduling, which we will always confirm with you before finalising the appointment.",
+    ],
+    relatedTitle: "Related AutoGlow Services",
+    related: [
+      {
+        label: "Sofa Cleaning in Lahore",
+        href: "/services/sofa-cleaning-lahore",
+        description: "Fabric-compatible sofa cleaning at your doorstep, priced by number of seats.",
+      },
+      {
+        label: "Mobile Car Wash in Lahore",
+        href: "/services/car-wash-lahore",
+        description: "Our original service — a full exterior wash and vacuum at your home or office.",
+      },
+      {
+        label: "All AutoGlow Services",
+        href: "/#services",
+        description: "See every doorstep cleaning service we offer across Lahore.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How much does solar panel cleaning cost in Lahore?",
+        answer:
+          "Our packages start from Rs 2,000 for up to 10 panels, Rs 3,500 for 11–20 panels and Rs 5,000 for 21–30 panels. These are starting rates — the final price is confirmed based on roof accessibility, panel condition, quantity and location.",
+      },
+      {
+        question: "What if I have more than 30 solar panels?",
+        answer:
+          "Message us on WhatsApp with your panel count and location and we will prepare a custom quotation for you.",
+      },
+      {
+        question: "Do you need access to my roof?",
+        answer:
+          "Yes. Safe access to the panels is required. We ask for roof and access details at booking and confirm that the job can be carried out safely before scheduling it. We do not accept unsafe roof-access requests.",
+      },
+      {
+        question: "Do you repair panels or carry out electrical work?",
+        answer:
+          "No. We clean panel surfaces only. We do not carry out repairs, electrical maintenance or any work on your solar system itself.",
+      },
+      {
+        question: "How often should solar panels be cleaned?",
+        answer:
+          "It depends on how much dust your location collects. Many customers in Lahore book a clean when they can see visible dust build-up on the panel surfaces.",
+      },
+      {
+        question: "Can I book solar panel cleaning and a car wash together?",
+        answer:
+          "Yes. Submit a booking for each service, or message us on WhatsApp and we will arrange the visits for you.",
+      },
+    ],
+  },
+  {
+    slug: "sofa-cleaning-lahore",
+    category: "sofa",
+    title: "Sofa Cleaning in Lahore",
+    metaDescription:
+      "Book doorstep sofa cleaning in Lahore with AutoGlow. Fabric-compatible cleaning, dust and debris removal and general dirt treatment, priced by seat from Rs 500.",
+    h1: "Sofa Cleaning in Lahore",
+    image: "/images/sofa-cleaning.webp",
+    imageAlt: "A clean fabric sofa set in a Lahore living room after an AutoGlow sofa cleaning visit",
+    intro: [
+      "Sofas take daily use — dust settles into the fabric, and everyday spills and marks build up over time. AutoGlow now offers sofa cleaning as a doorstep service in Lahore, carried out at your home rather than at a workshop.",
+      "We remove dust and loose debris, clean the fabric using methods appropriate for the material, and treat general dirt and marks. Pricing is based on the number of seats, so you can pick the package that matches your sofa.",
+    ],
+    packagesTitle: "Sofa Cleaning Packages",
+    packagesIntro:
+      "Choose the package that matches your sofa. Every price below is a starting rate, confirmed with you before work begins.",
+    includedTitle: "What a Sofa Clean Covers",
+    included: [
+      "Dust and loose-debris removal",
+      "Fabric-compatible surface cleaning",
+      "General dirt and spot treatment",
+      "Attention to seams, corners and cushion gaps",
+      "Finishing inspection before we leave",
+      "A clear starting price based on your seat count",
+    ],
+    startingPrice: "Rs 500",
+    whyTitle: "Why Book Sofa Cleaning With AutoGlow",
+    why: [
+      {
+        title: "Priced by the Seat",
+        description:
+          "From a single seat to a full set or an eligible L-shaped sofa, you choose the package that matches what you actually have.",
+      },
+      {
+        title: "Fabric-Appropriate Methods",
+        description:
+          "We check the fabric before we start and clean in a way suited to the material rather than applying the same approach to everything.",
+      },
+      {
+        title: "Done at Your Home",
+        description:
+          "No need to move heavy furniture or arrange transport — our team cleans your sofa where it sits.",
+      },
+    ],
+    howItWorksTitle: "How Booking Works",
+    howItWorks: [
+      {
+        title: "1. Pick your package",
+        description:
+          "Choose a single seat, a family set of up to 5 seats, or complete care for up to 7 seats or an eligible L-shaped sofa.",
+      },
+      {
+        title: "2. Tell us about your sofa",
+        description:
+          "Share the sofa type, number of seats and the fabric if you know it, so we can plan the visit properly.",
+      },
+      {
+        title: "3. We confirm the booking",
+        description:
+          "We confirm the final price with you before the appointment, including any custom quotation for delicate fabrics or extra seats.",
+      },
+      {
+        title: "4. We clean at your doorstep",
+        description:
+          "Our team arrives at the agreed time, cleans your sofa in place and carries out a finishing inspection.",
+      },
+    ],
+    serviceAreaTitle: "Service Area in Lahore",
+    serviceArea: [
+      "AutoGlow covers homes and offices across Lahore for sofa cleaning. Enter your address and area when booking and we will confirm coverage and timing for your location.",
+      "Travel to some outlying areas may affect scheduling, which we will always confirm with you before finalising the appointment.",
+    ],
+    relatedTitle: "Related AutoGlow Services",
+    related: [
+      {
+        label: "Solar Panel Cleaning in Lahore",
+        href: "/services/solar-panel-cleaning-lahore",
+        description: "Gentle rooftop solar panel cleaning, priced by the number of panels.",
+      },
+      {
+        label: "Interior Car Cleaning in Lahore",
+        href: "/services/interior-cleaning-lahore",
+        description: "Seat, carpet and cabin cleaning for your car, at your home or office.",
+      },
+      {
+        label: "All AutoGlow Services",
+        href: "/#services",
+        description: "See every doorstep cleaning service we offer across Lahore.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How much does sofa cleaning cost in Lahore?",
+        answer:
+          "Our packages start from Rs 500 for a single fabric sofa seat, Rs 2,499 for up to 5 seats and Rs 3,999 for up to 7 seats or an eligible L-shaped sofa. These are starting rates confirmed before work begins.",
+      },
+      {
+        question: "Can you remove every stain from my sofa?",
+        answer:
+          "We treat general dirt and stains as part of every package, but complete stain removal cannot be guaranteed. Older, set-in marks and some fabrics respond better than others.",
+      },
+      {
+        question: "What if my sofa has a delicate fabric or more than 7 seats?",
+        answer:
+          "Delicate fabrics, heavy stains, oversize sofas and additional seats may require a custom quotation. Message us on WhatsApp with the details and we will quote for you.",
+      },
+      {
+        question: "Do I need to move my sofa before you arrive?",
+        answer:
+          "No. We clean your sofa where it sits. Just make sure there is enough clear space around it for our team to work.",
+      },
+      {
+        question: "How long does sofa cleaning take?",
+        answer:
+          "It depends on the number of seats and the condition of the fabric. Our team will give you a time estimate when the booking is confirmed.",
+      },
+      {
+        question: "Can I book sofa cleaning along with another AutoGlow service?",
+        answer:
+          "Yes. Submit a booking for each service, or message us on WhatsApp and we will arrange the visits for you.",
       },
     ],
   },
